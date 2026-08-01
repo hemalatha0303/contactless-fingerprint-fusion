@@ -22,10 +22,35 @@ python src/evaluation.py  # ROC comparison + metrics -> outputs/roc_curve.png, o
 ## Pipeline
 
 ```
-image -> preprocess (denoise, Otsu binarize, skeletonize, orientation field)
-      -> minutiae extraction (crossing number) --------\
-      -> Gabor texture features ------------------------\
-                                                           -> normalize -> fuse -> score
+Fingerprint Image
+       │
+       ▼
+Image Preprocessing
+   • Resize
+   • Grayscale Conversion
+   • CLAHE Contrast Enhancement
+   • Gaussian Denoising
+   • Adaptive/Otsu Thresholding
+   • Morphological Cleaning
+   • Skeletonization
+       │
+       ├──────────────────────────────┐
+       ▼                              ▼
+Minutiae Extraction            Gabor Texture Extraction
+(Crossing Number)              (Multi-orientation Filters)
+       │                              │
+       ▼                              ▼
+Minutiae Matching              Texture Similarity
+       └──────────────┬───────────────┘
+                      ▼
+             Score Normalization
+                      ▼
+             Weighted Score Fusion
+                      ▼
+          Match / Non-Match Decision
+                      ▼
+      Performance Evaluation
+ (ROC, AUC, FAR, FRR, TAR, EER)
 ```
 
 See `ANALYSIS_REPORT.md` for the before/after comparison and why each
