@@ -1,0 +1,8 @@
+{
+  "minutiae_min": 0.0374,
+  "minutiae_max": 0.6371,
+  "texture_min": 0.14945077896118164,
+  "texture_max": 0.9463270902633667,
+  "best_weight": 0.81,
+  "decision_threshold": 0.3622305038996614
+}

@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+.venv/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Streamlit local runtime state (not secrets -- safe to ignore)
+.streamlit/secrets.toml
+
+# NOTE: data/ and outputs/ are intentionally NOT ignored here.
+# data/ (~15MB of .tif images) is small enough to commit directly and
+# the pipeline has nothing to run without it. outputs/ contains the
+# benchmark results, ROC plot, and the deployment_bundle.json +
+# classifier_fusion_model.joblib that app.py needs at runtime -- if
+# you deploy without running main.py as a build step, app.py needs
+# these files already committed.
